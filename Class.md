@@ -195,3 +195,14 @@ var b = ImmutablePoint(1, 1); // Does NOT create a constant
 
 assert(!identical(a, b)); // NOT the same instance!
 ```
+
+### Factory constructors
+Use the `factory` keyword when implementing a constructor that _doesn't always create a new instance of its class_
+it might:
+- return an instance from a cache
+- return an instance of a subtype
+- _initializing a final variable_ using logic that can't be handled in the initializer list
+
+> Factory constructors **have no access to this**.
+
+
