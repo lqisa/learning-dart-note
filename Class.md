@@ -131,6 +131,37 @@ Execution order:
 2. superclass's no-arg constructor
 3. main class's no-arg constructor
 
+```dart
+class Base {
+  Base() {
+    print('superclass constructor Base is invoked'); // invoke order: 2
+  }
+}
+
+class Person extends Base {
+  Person() {
+    print(
+        'superclass constructor Person is invoked'); // invoke order: 3
+  }
+}
+
+String getName () {
+  print('initializer list'); // invoke order: 1
+  return 'Queue-name';
+}
+
+class Queue extends Person {
+  String name;
+  Queue() : name = getName() {
+    print('constructor Queue is invoked'); // invoke order: 4
+  }
+}
+
+void main() {
+  Queue();
+}
+```
+
 
 ### Expression evaluated before constructor
 > Because the arguments to the superclass constructor are evaluated before invoking the constructor, an argument can be an expression such as a function call
@@ -142,4 +173,8 @@ class Employee extends Person {
 }
 ```
 
+
+### Initializer list
+
+Besides invoking a superclass constructor, you can also initialize instance variables **before** the constructor body runs.
 
