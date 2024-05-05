@@ -80,7 +80,13 @@ class Person extends Base {
 
 class Queue extends Person {
   Queue(); // ERROR: The class 'Person' doesn't have an unnamed constructor. Try defining an unnamed constructor in 'Person', or invoking a different 
-  Queue() : super.constor();
+
+  // manually call one of the constructors in the superclass
+  Queue() : super.constor(); // OK
+  // constructor body
+  Queue() : super.constor() { // OK
+    print('call super named constructor and then self constructor')
+  }
 }
 
 void main() {
@@ -118,6 +124,12 @@ class Point {
 
 ### Constructors aren't inherited
 A superclass's **named constructor** is not inherited by a subclass  =>  you must implement in the subclass
+
+### Invoking a non-default superclass constructor
+Execution order:
+1. initializer list
+2. superclass's no-arg constructor
+3. main class's no-arg constructor
 
 
 
