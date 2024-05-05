@@ -46,16 +46,22 @@ Generative constructor（生成构造函数）是指在面向对象编程中用�
 #### default constructor
 > ⚠⚠⚠ The default constructor has **no arguments** and invokes the **no-argument constructor in the superclass**
 ```dart
-class Person {
+class Base {
+  Base() {
+    print('superclass constructor Base is invoked');  // called first
+  }
+}
+
+class Person extends Base {
   Person() {
-    print('superclass constructor is invoked'); // print here
+    print('superclass constructor Person is invoked'); // called after Base constructor
   }
 }
 
 class Queue extends Person {}
 
 void main() {
-  Queue(); // OK
+  Queue();
 }
 
 ```
