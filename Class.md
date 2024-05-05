@@ -178,3 +178,20 @@ class Employee extends Person {
 
 Besides invoking a superclass constructor, you can also initialize instance variables **before** the constructor body runs.
 
+### Constant constructors
+If a constant constructor is outside of a constant context and is invoked without const, it creates a non-constant object:
+
+```dart
+class ImmutablePoint {
+  static const ImmutablePoint origin = ImmutablePoint(0, 0);
+
+  final double x, y;
+
+  const ImmutablePoint(this.x, this.y);
+}
+
+var a = const ImmutablePoint(1, 1); // Creates a constant
+var b = ImmutablePoint(1, 1); // Does NOT create a constant
+
+assert(!identical(a, b)); // NOT the same instance!
+```
