@@ -66,7 +66,29 @@ void main() {
 
 ```
 
-#### explictly call constructor
+Need explictly call Super named constructor beacause no default constructor
+```
+class Base {
+  Base() {
+    print('superclass constructor Base is invoked');
+  }
+}
+
+class Person extends Base {
+  Person.constor();
+}
+
+class Queue extends Person {
+  Queue(); // ERROR: The class 'Person' doesn't have an unnamed constructor. Try defining an unnamed constructor in 'Person', or invoking a different 
+  Queue() : super.constor();
+}
+
+void main() {
+  Queue();
+}
+```
+
+#### explicitly call constructor
 ```dart
 class Queue {
   Queue.constor();
