@@ -132,5 +132,14 @@ Execution order:
 3. main class's no-arg constructor
 
 
+### Expression evaluated before constructor
+> Because the arguments to the superclass constructor are evaluated before invoking the constructor, an argument can be an expression such as a function call
+
+```dart
+class Employee extends Person {
+  Employee() : super.fromJson(fetchDefaultData());
+  // ···
+}
+```
 
 
